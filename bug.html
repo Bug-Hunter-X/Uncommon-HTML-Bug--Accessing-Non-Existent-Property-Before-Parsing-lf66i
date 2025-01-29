@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+
+  <script>
+    // This is an uncommon error: attempting to access a non-existent property on an element before it's fully parsed.
+    const element = document.getElementById('myDiv');
+    const nonExistentProperty = element.nonExistentProperty;
+    console.log(nonExistentProperty); // Logs undefined, but might throw an error in some browsers or situations
+    // A more reliable way to check for properties:
+    if (element.hasOwnProperty('nonExistentProperty')) {
+        console.log(element.nonExistentProperty);
+    } else {
+        console.log('Property does not exist');
+    }
+  </script>
+</body>
+</html>
